@@ -51,12 +51,20 @@
                         <resolution>0.01</resolution>
                     </range>
                 </ray>
-                <plugin name="laser_controller" filename="libgazebo_ros_ray_sensor.so">
+                <!-- <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so"> -->
+                    <!-- <ros> -->
+                        <!-- <remapping>~/out:=scan</remapping> publishing ont the topic scan -->
+                    <!-- </ros> -->
+                    <!-- <output_type>sensor_msg/LaserScan</output_type> -->
+                    <!-- <frame_name>lidar_link</frame_name> -->
+                <!-- </plugin> -->
+                <plugin name="scan" filename="libgazebo_ros_ray_sensor.so">
                     <ros>
-                        <argument>~/out:=scan</argument> <!-- publishing ont the topic scan -->
+                      <remapping>~/out:=scan</remapping>
                     </ros>
-                    <output_type>sensor_msg/LaserScan</output_type>
-                </plugin>
+                    <output_type>sensor_msgs/LaserScan</output_type>
+                    <frame_name>LiDAR_link</frame_name>
+                  </plugin>
             </sensor>
         </gazebo>
 </robot>
